@@ -66,6 +66,10 @@ const STATE_FACTS = {
   "Massachusetts":"MA has one of the lowest passing scores — 18 out of 25 questions correct (72%).",
 };
 
+const STATE_HANDBOOKS = {
+  "Nevada": { file: "nv_dlbook.pdf", label: "Nevada Driver's Handbook" },
+};
+
 const DAILY_CHALLENGES = [
   { type:"quiz_correct", target:5,  label:"Answer 5 questions correctly",  icon:"🎯", xp:75  },
   { type:"lesson",                  label:"Complete any lesson",            icon:"📖", xp:75  },
@@ -647,19 +651,24 @@ function DashboardScreen({ profile, setProfile, topics, levels }) {
       {/* Quiz History */}
       <QuizHistoryCard history={history} topics={topics}/>
 
-      {/* Nevada Handbook */}
-      <div className="card-sm" style={{ marginBottom:16, display:"flex", alignItems:"center", justifyContent:"space-between", gap:12 }}>
-        <div>
-          <div style={{ fontWeight:800, fontSize:14 }}>📖 Nevada Driver's Handbook</div>
-          <div style={{ color:"#94a3b8", fontSize:12 }}>Official DMV study guide (PDF)</div>
-        </div>
-        <a href={`${import.meta.env.BASE_URL}nv_dlbook.pdf`} download="nv_dlbook.pdf"
-          style={{ flexShrink:0, padding:"8px 16px", borderRadius:10, background:"#1e293b",
-            border:"1px solid #334155", color:"#f59e0b", fontWeight:800, fontSize:13,
-            textDecoration:"none", whiteSpace:"nowrap" }}>
-          ⬇ Download
-        </a>
-      </div>
+      {/* State Handbook */}
+      {STATE_HANDBOOKS[profile.state] && (() => {
+        const hb = STATE_HANDBOOKS[profile.state];
+        return (
+          <div className="card-sm" style={{ marginBottom:16, display:"flex", alignItems:"center", justifyContent:"space-between", gap:12 }}>
+            <div>
+              <div style={{ fontWeight:800, fontSize:14 }}>📖 {hb.label}</div>
+              <div style={{ color:"#94a3b8", fontSize:12 }}>Official DMV study guide (PDF)</div>
+            </div>
+            <a href={`${import.meta.env.BASE_URL}${hb.file}`} download={hb.file}
+              style={{ flexShrink:0, padding:"8px 16px", borderRadius:10, background:"#1e293b",
+                border:"1px solid #334155", color:"#f59e0b", fontWeight:800, fontSize:13,
+                textDecoration:"none", whiteSpace:"nowrap" }}>
+              ⬇ Download
+            </a>
+          </div>
+        );
+      })()}
     </div>
   );
 }
