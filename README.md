@@ -2,6 +2,8 @@
 
 > The fun way to ace your driver's license test.
 
+**Live app:** https://fantini29.github.io/DriverReady/
+
 A gamified US driver's license test prep app for teenagers. Study the rules of the road, take practice quizzes, earn badges, and track your readiness — all in one place.
 
 ---
@@ -66,8 +68,8 @@ See [CLAUDE.md](./CLAUDE.md) for Claude Code instructions and architecture notes
 | Build tool | Vite 5 |
 | Styling | Custom CSS-in-JS (template literal) |
 | Fonts | Fredoka One + Nunito (Google Fonts) |
-| Storage | localStorage → Supabase (planned) |
-| Hosting | Vercel (planned) |
+| Storage | localStorage + Supabase |
+| Hosting | GitHub Pages |
 
 ---
 
