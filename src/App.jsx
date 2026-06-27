@@ -774,7 +774,7 @@ function LessonScreen({ topic, lesson, profile, setProfile, onBack }) {
             );
             if (item.type==="image") return (
               <div key={i} style={{ textAlign:"center", margin:"14px 0" }}>
-                <img src={item.src} alt={item.alt || ""} style={{ maxWidth:"100%", borderRadius:8, border:"1px solid #334155" }}/>
+                <img src={item.src?.startsWith("/") ? `${import.meta.env.BASE_URL}${item.src.slice(1)}` : item.src} alt={item.alt || ""} style={{ maxWidth:"100%", borderRadius:8, border:"1px solid #334155" }}/>
                 {item.caption && <p style={{ fontSize:12, color:"#94a3b8", marginTop:6, fontStyle:"italic" }}>{item.caption}</p>}
               </div>
             );
