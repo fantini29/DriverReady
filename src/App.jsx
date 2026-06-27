@@ -644,6 +644,20 @@ function DashboardScreen({ profile, setProfile, topics, levels }) {
         );
       })()}
 
+      {/* Nevada Handbook */}
+      <div className="card-sm" style={{ marginBottom:16, display:"flex", alignItems:"center", justifyContent:"space-between", gap:12 }}>
+        <div>
+          <div style={{ fontWeight:800, fontSize:14 }}>📖 Nevada Driver's Handbook</div>
+          <div style={{ color:"#94a3b8", fontSize:12 }}>Official DMV study guide (PDF)</div>
+        </div>
+        <a href={`${import.meta.env.BASE_URL}nv_dlbook.pdf`} download="nv_dlbook.pdf"
+          style={{ flexShrink:0, padding:"8px 16px", borderRadius:10, background:"#1e293b",
+            border:"1px solid #334155", color:"#f59e0b", fontWeight:800, fontSize:13,
+            textDecoration:"none", whiteSpace:"nowrap" }}>
+          ⬇ Download
+        </a>
+      </div>
+
       {/* Quiz History */}
       <QuizHistoryCard history={history} topics={topics}/>
     </div>
