@@ -917,7 +917,7 @@ function QuizScreen({ profile, setProfile, topics }) {
     if (timeLeft > 0 && !done) {
       timerRef.current = setTimeout(() => setTimeLeft(t=>t-1), 1000);
     } else if (timeLeft===0 && mode && mode!=="practice" && questions.length && !done) {
-      if (Object.keys(answers).length > 0) setDone(true);
+      if (Object.keys(answers).length > 0) finishQuiz(answers);
     }
     return () => clearTimeout(timerRef.current);
   }, [timeLeft, done]);
