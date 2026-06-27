@@ -735,6 +735,14 @@ function LessonScreen({ topic, lesson, profile, setProfile, onBack }) {
     if (!dc.completed && challenge.type === "lesson") {
       dc = { ...dc, completed: true };
       xpGained += challenge.xp;
+    } else if (!dc.completed && challenge.type === "quiz_correct" && score > 0) {
+      const newProgress = (dc.progress || 0) + score;
+      if (newProgress >= challenge.target) {
+        dc = { ...dc, progress: newProgress, completed: true };
+        xpGained += challenge.xp;
+      } else {
+        dc = { ...dc, progress: newProgress };
+      }
     }
 
     const newXp = profile.xp + xpGained;
