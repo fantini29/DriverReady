@@ -644,6 +644,9 @@ function DashboardScreen({ profile, setProfile, topics, levels }) {
         );
       })()}
 
+      {/* Quiz History */}
+      <QuizHistoryCard history={history} topics={topics}/>
+
       {/* Nevada Handbook */}
       <div className="card-sm" style={{ marginBottom:16, display:"flex", alignItems:"center", justifyContent:"space-between", gap:12 }}>
         <div>
@@ -657,9 +660,6 @@ function DashboardScreen({ profile, setProfile, topics, levels }) {
           ⬇ Download
         </a>
       </div>
-
-      {/* Quiz History */}
-      <QuizHistoryCard history={history} topics={topics}/>
     </div>
   );
 }
